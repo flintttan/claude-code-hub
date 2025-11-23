@@ -242,6 +242,7 @@
         "copySuccess": "已复制到剪贴板",
         "copyFailed": "复制失败",
         "copyResult": "复制结果",
+        "close": "关闭",
         "success": "成功",
         "failed": "失败"
       },
@@ -694,7 +695,7 @@
           "summary": "验证供应商与模型连通性",
           "desc": "测试供应商模型是否可用，默认与路由配置中选择的供应商类型保持一致。",
           "testLabel": "供应商模型测试",
-          "notice": "注意：测试将向供应商发送真实请求（非流式），可能消耗少量额度。请确认供应商 URL、API 密钥及模型配置正确。"
+          "notice": "注意：测试将向供应商发送真实请求，可能消耗少量额度。请确认供应商 URL、API 密钥及模型配置正确。"
         },
         "codexStrategy": {
           "title": "Codex Instructions 策略",
@@ -727,7 +728,7 @@
           "summary": {
             "none": "不启用",
             "minimax": "Minimax",
-            "glm": "智谱 GLM (预留)",
+            "glm": "智谱 GLM",
             "custom": "自定义 (预留)"
           },
           "desc": "启用后，将 MCP 工具调用透传到指定的 AI 服务商（如 minimax 的图片识别、联网搜索）",
@@ -743,7 +744,7 @@
             },
             "glm": {
               "label": "智谱 GLM",
-              "desc": "透传到智谱 MCP 服务（预留，暂未实现）"
+              "desc": "透传到智谱 MCP 服务（支持图片分析、视频分析等工具）"
             },
             "custom": {
               "label": "自定义",
