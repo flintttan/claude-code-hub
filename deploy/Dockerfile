@@ -1,11 +1,20 @@
 # syntax=docker/dockerfile:1
 
-FROM --platform=$BUILDPLATFORM oven/bun:1.3.2-slim AS build-base
+FROM --platform=$BUILDPLATFORM node:22-slim AS build-base
 WORKDIR /app
 
+# Install Bun for build stage only
+RUN apt-get update && \
+    apt-get install -y curl unzip && \
+    curl -fsSL https://bun.sh/install | bash && \
+    rm -rf /var/lib/apt/lists/*
+
+ENV PATH="/root/.bun/bin:$PATH"
+
 FROM build-base AS deps
-COPY package.json bun.lock ./
-RUN bun install --frozen-lockfile
+COPY package.json package-lock.json* ./
+# Use npm instead of bun for dependency installation (避免 Bun 版本解析问题)
+RUN npm ci || npm install
 
 FROM deps AS build
 COPY . .
